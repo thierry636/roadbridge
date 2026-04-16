@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Roadbridge</title>
-  <meta name="description" content="Studio de build IA. Expertise métier et technique au service de problèmes réels." />
+  <meta name="description" content="Roadbridge — studio IA indépendant. Deux associés, posture IA-native, produits édités en propre pour la supply chain et l'événementiel." />
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -111,6 +111,15 @@
       padding-bottom: 6rem;
     }
 
+    .hero .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 2.25rem 0;
+    }
+
     .hero h1 {
       font-size: clamp(2.5rem, 6vw, 5rem);
       font-weight: 300;
@@ -133,6 +142,71 @@
       color: var(--muted);
       font-size: 1.1rem;
       user-select: none;
+    }
+
+    /* STUDIO */
+    .studio {
+      padding: 7rem 0;
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .studio-lead p {
+      max-width: 54ch;
+      margin: 0 0 1.25rem 0;
+    }
+
+    .studio-lead p:last-child {
+      margin-bottom: 0;
+    }
+
+    .facts {
+      margin: 0;
+      padding: 1.75rem 0 0 0;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .facts > div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .facts dt {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .facts dd {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    @media (min-width: 780px) {
+      .studio-grid {
+        grid-template-columns: 1.6fr 1fr;
+        gap: 5rem;
+        align-items: start;
+      }
+      .facts {
+        grid-template-columns: 1fr;
+        border-top: none;
+        border-left: 1px solid var(--line);
+        padding: 0.25rem 0 0.25rem 2.25rem;
+        gap: 1.75rem;
+      }
     }
 
     /* EXPERTISE */
@@ -378,10 +452,39 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
+      <p class="eyebrow reveal">Studio IA indépendant · Paris</p>
       <h1 class="reveal">Nous construisons des produits IA sur des problèmes que nous comprenons de l'intérieur.</h1>
-      <p class="sub reveal">Expertise métier et expertise technique — combinées pour aller du problème réel au produit qui fonctionne.</p>
+      <p class="sub reveal">Studio indépendant, deux associés. Expertise métier et expertise technique combinées pour aller du problème réel au produit qui tient dans la durée.</p>
     </div>
     <div class="arrow" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- STUDIO -->
+  <section class="studio">
+    <div class="container">
+      <p class="section-label reveal">Le studio</p>
+      <div class="studio-grid reveal">
+        <div class="studio-lead">
+          <p>Roadbridge est un studio indépendant, composé de deux associés aux profils complémentaires&nbsp;: un ancrage métier, une exécution technique.</p>
+          <p>Nous sommes IA-native. Agents, orchestration de modèles et outillage font partie de notre quotidien d'ingénierie — pas d'une couche ajoutée à des méthodes anciennes.</p>
+          <p>Notre taille est un choix. Elle nous impose de rester sur des sujets que nous connaissons réellement, et d'y aller en profondeur plutôt qu'en surface.</p>
+        </div>
+        <dl class="facts">
+          <div>
+            <dt>Équipe</dt>
+            <dd>Deux associés — métier et technique</dd>
+          </div>
+          <div>
+            <dt>Posture</dt>
+            <dd>IA-native, depuis l'origine</dd>
+          </div>
+          <div>
+            <dt>Implantation</dt>
+            <dd>Clichy · Région parisienne</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
   </section>
 
   <!-- EXPERTISE -->
@@ -391,27 +494,28 @@
       <div class="grid reveal">
         <div class="col">
           <h3>Compétence métier</h3>
-          <p>Deux filières où nous avons un ancrage profond&nbsp;:</p>
+          <p>Deux filières où nous opérons avec un ancrage profond&nbsp;:</p>
           <ul class="filieres">
             <li>Supply chain</li>
             <li>Agendas culturels et événementiels</li>
           </ul>
-          <p>Nous en connaissons les flux, les contraintes opérationnelles et les irritants réels des acteurs en place.</p>
+          <p>Flux, contraintes opérationnelles, irritants réels des acteurs en place&nbsp;: nous les avons pratiqués avant d'y proposer des outils.</p>
         </div>
         <div class="divider" aria-hidden="true"></div>
         <div class="col">
           <h3>Compétence technique</h3>
-          <p>Agents IA, structuration de données, automatisation de processus. Nous concevons et développons bout en bout.</p>
+          <p>Agents IA, structuration de données, orchestration et automatisation de processus. Conception et développement bout en bout, sans intermédiaires.</p>
+          <p>Une posture IA-native assumée dès la conception — pas une couche ajoutée à un existant.</p>
         </div>
       </div>
-      <p class="note reveal">Nous appliquons cette combinaison à nos propres produits — et à ceux de partenaires qui partagent la même exigence.</p>
+      <p class="note reveal">Nous appliquons cette combinaison d'abord à nos propres produits, puis à ceux de partenaires qui partagent la même exigence.</p>
     </div>
   </section>
 
   <!-- PRODUITS -->
   <section class="produits">
     <div class="container">
-      <p class="section-label reveal">Nos produits</p>
+      <p class="section-label reveal">Produits édités</p>
       <div class="cards reveal">
         <article class="card">
           <div class="card-head">
@@ -457,7 +561,7 @@
   <section class="partners">
     <div class="container">
       <p class="section-label reveal">Travailler ensemble</p>
-      <p class="reveal">Nous travaillons avec des partenaires qui ont un problème concret, une bonne connaissance de leur terrain et une exigence de résultat. Ce qui nous intéresse, c'est d'aller du problème au produit — et de nous y tenir dans la durée.</p>
+      <p class="reveal">Nous collaborons avec des partenaires qui ont un problème concret, une bonne connaissance de leur terrain et une exigence de résultat. Notre approche&nbsp;: aller du problème au produit, puis nous y tenir dans la durée.</p>
     </div>
   </section>
 
@@ -466,6 +570,7 @@
     <div class="container">
       <p class="section-label reveal">Contact</p>
       <div class="reveal">
+        <p class="lead">Pour toute discussion de collaboration ou demande commerciale.</p>
         <p><a class="email" href="mailto:info@roadbridge.co">info@roadbridge.co</a></p>
         <p class="addr">6 Rue des Bateliers — 92110 Clichy, France</p>
       </div>
