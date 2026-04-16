@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Roadbridge</title>
   <meta name="description" content="Studio de build IA. Expertise métier et technique au service de problèmes réels." />
-  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="icon" type="image/png" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0C0C0C;
+      --bg: #161616;
       --text: #F0F0F0;
-      --muted: #666666;
+      --muted: #7A7A7A;
       --accent: #A8B8FF;
-      --line: #1E1E1E;
+      --line: #2A2A2A;
       --font: 'Inter', system-ui, -apple-system, sans-serif;
       --max: 1100px;
       --pad-x: clamp(1.25rem, 5vw, 3rem);
@@ -233,6 +233,35 @@
     .pill.active { color: var(--accent); }
     .pill.pending { color: var(--muted); }
 
+    .card .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card .site-logo {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      opacity: 0.9;
+      display: block;
+    }
+
+    .card .site-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      align-self: flex-start;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    .card .site-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     @media (min-width: 780px) {
       .cards {
         grid-template-columns: 1fr 1fr;
@@ -314,7 +343,7 @@
 
   <!-- BRAND -->
   <a class="brand" href="#" aria-label="Roadbridge">
-    <img src="logo.svg" alt="" width="32" height="32" />
+    <img src="logo.png" alt="" width="32" height="32" />
     <span class="wordmark">Roadbridge</span>
   </a>
 
@@ -358,16 +387,22 @@
           <span class="pill active">Actif</span>
         </article>
         <article class="card">
-          <span class="tag">Logistique</span>
+          <div class="card-head">
+            <span class="tag">Logistique</span>
+            <img class="site-logo" src="https://routing-bridge.com/favicon.ico" alt="" width="22" height="22" loading="lazy" />
+          </div>
           <h3 class="name">RoutingBridge</h3>
           <p class="desc">Optimisation intelligente des flux et tournées de transport.</p>
-          <span class="pill active">Actif</span>
+          <a class="site-link" href="https://routing-bridge.com/" target="_blank" rel="noopener">routing-bridge.com ↗</a>
         </article>
         <article class="card">
-          <span class="tag">Logistique</span>
+          <div class="card-head">
+            <span class="tag">Logistique</span>
+            <img class="site-logo" src="https://booking-bridge.com/favicon.ico" alt="" width="22" height="22" loading="lazy" />
+          </div>
           <h3 class="name">BookingBridge</h3>
           <p class="desc">Automatisation du booking et de la réservation transport.</p>
-          <span class="pill active">Actif</span>
+          <a class="site-link" href="https://booking-bridge.com/" target="_blank" rel="noopener">booking-bridge.com ↗</a>
         </article>
         <article class="card">
           <span class="tag">Événementiel</span>
@@ -392,7 +427,6 @@
     <div class="container">
       <p class="section-label reveal">Contact</p>
       <div class="reveal">
-        <p class="lead">Pour toute demande sérieuse :</p>
         <p><a class="email" href="mailto:info@roadbridge.co">info@roadbridge.co</a></p>
         <p class="addr">6 Rue des Bateliers — 92110 Clichy, France</p>
       </div>
