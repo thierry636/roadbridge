@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="rb-grad" x1="20" y1="180" x2="180" y2="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B2FD9"/>
+      <stop offset="55%" stop-color="#4C7BEA"/>
+      <stop offset="100%" stop-color="#6FCDE8"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(100 100) rotate(-18) translate(-100 -100)">
+    <path fill="url(#rb-grad)" d="
+      M46 70
+      q0 -22 22 -22
+      h18
+      q14 0 14 14
+      v6
+      q0 8 8 8
+      h10
+      q14 0 14 14
+      v18
+      q0 22 -22 22
+      h-18
+      q-14 0 -14 -14
+      v-6
+      q0 -8 -8 -8
+      h-10
+      q-14 0 -14 -14
+      z"/>
+    <path fill="url(#rb-grad)" opacity="0.92" d="
+      M60 54
+      q0 -14 14 -14
+      h8
+      q10 0 10 10
+      v4
+      q0 6 6 6
+      h8
+      q10 0 10 10
+      v8
+      q0 14 -14 14
+      h-8
+      q-10 0 -10 -10
+      v-4
+      q0 -6 -6 -6
+      h-8
+      q-10 0 -10 -10
+      z"
+      transform="translate(18 18)"/>
+    <circle cx="140" cy="38" r="14" fill="url(#rb-grad)"/>
+    <circle cx="64" cy="162" r="12" fill="url(#rb-grad)"/>
+  </g>
+</svg>
