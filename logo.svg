@@ -1,54 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
   <defs>
-    <linearGradient id="rb-grad" x1="24" y1="176" x2="176" y2="24" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#2A1DD2"/>
-      <stop offset="55%" stop-color="#4A7BEB"/>
-      <stop offset="100%" stop-color="#72D0E8"/>
+    <linearGradient id="rb-grad" x1="28" y1="172" x2="172" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2A1FC9"/>
+      <stop offset="55%" stop-color="#4A7BEA"/>
+      <stop offset="100%" stop-color="#78D8E5"/>
     </linearGradient>
   </defs>
-  <g transform="rotate(-18 100 100)" fill="url(#rb-grad)">
-    <!-- Horizontal piece with two puzzle-piece bumps -->
-    <path d="
-      M52 78
-      h22
-      q7 0 7 -7
-      v-3
-      a11 11 0 0 1 22 0
-      v3
-      q0 7 7 7
-      h26
-      a22 22 0 0 1 0 44
-      h-22
-      q-7 0 -7 7
-      v3
-      a11 11 0 0 1 -22 0
-      v-3
-      q0 -7 -7 -7
-      h-26
-      a22 22 0 0 1 0 -44
-      z"/>
-    <!-- Vertical piece with two puzzle-piece bumps -->
-    <path d="
-      M78 52
-      v22
-      q0 7 -7 7
-      h-3
-      a11 11 0 0 0 0 22
-      h3
-      q7 0 7 7
-      v26
-      a22 22 0 0 0 44 0
-      v-22
-      q0 -7 7 -7
-      h3
-      a11 11 0 0 0 0 -22
-      h-3
-      q-7 0 -7 -7
-      v-26
-      a22 22 0 0 0 -44 0
-      z"/>
+  <g transform="rotate(-28 100 100)" fill="url(#rb-grad)">
+    <path d="M50 70 h28 q10 0 10 -10 v-4 a12 12 0 0 1 24 0 v4 q0 10 10 10 h28 a30 30 0 0 1 0 60 h-28 q-10 0 -10 10 v4 a12 12 0 0 1 -24 0 v-4 q0 -10 -10 -10 h-28 a30 30 0 0 1 0 -60 z"/>
+    <path d="M130 50 v28 q0 10 10 10 h4 a12 12 0 0 1 0 24 h-4 q-10 0 -10 10 v28 a30 30 0 0 1 -60 0 v-28 q0 -10 -10 -10 h-4 a12 12 0 0 1 0 -24 h4 q10 0 10 -10 v-28 a30 30 0 0 1 60 0 z"/>
   </g>
-  <!-- Accent circles -->
-  <circle cx="152" cy="36" r="13" fill="url(#rb-grad)"/>
-  <circle cx="54" cy="164" r="11" fill="url(#rb-grad)"/>
+  <circle cx="158" cy="36" r="13" fill="url(#rb-grad)"/>
+  <circle cx="42" cy="164" r="11" fill="url(#rb-grad)"/>
 </svg>
