@@ -157,6 +157,34 @@
       margin: 0;
     }
 
+    .expertise .col p + .filieres {
+      margin-top: 1rem;
+    }
+
+    .expertise .col .filieres {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem 0;
+      max-width: 38ch;
+    }
+
+    .expertise .col .filieres li {
+      position: relative;
+      padding-left: 1.25rem;
+      font-weight: 500;
+      margin: 0.35rem 0;
+    }
+
+    .expertise .col .filieres li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 0.6rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
     .expertise .note {
       margin-top: 5rem;
       text-align: center;
@@ -362,12 +390,17 @@
       <p class="section-label reveal">Ce que nous apportons</p>
       <div class="grid reveal">
         <div class="col">
-          <h3>Métier</h3>
-          <p>Logistique, transport, événementiel. Nous connaissons les flux, les contraintes opérationnelles et les irritants réels des acteurs du secteur.</p>
+          <h3>Compétence métier</h3>
+          <p>Deux filières où nous avons un ancrage profond&nbsp;:</p>
+          <ul class="filieres">
+            <li>Supply chain</li>
+            <li>Agendas culturels et événementiels</li>
+          </ul>
+          <p>Nous en connaissons les flux, les contraintes opérationnelles et les irritants réels des acteurs en place.</p>
         </div>
         <div class="divider" aria-hidden="true"></div>
         <div class="col">
-          <h3>Technique</h3>
+          <h3>Compétence technique</h3>
           <p>Agents IA, structuration de données, automatisation de processus. Nous concevons et développons bout en bout.</p>
         </div>
       </div>
