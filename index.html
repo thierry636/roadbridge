@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roadbridge</title>
+  <meta name="description" content="Studio de build IA. Expertise métier et technique au service de problèmes réels." />
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0C0C0C;
+      --text: #F0F0F0;
+      --muted: #666666;
+      --accent: #A8B8FF;
+      --line: #1E1E1E;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --max: 1100px;
+      --pad-x: clamp(1.25rem, 5vw, 3rem);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3 {
+      font-weight: 500;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-left: var(--pad-x);
+      padding-right: var(--pad-x);
+    }
+
+    section {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    /* Fade-in */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 900ms ease, transform 900ms ease;
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* BRAND */
+    .brand {
+      position: absolute;
+      top: 2rem;
+      left: var(--pad-x);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      z-index: 10;
+    }
+    .brand img {
+      display: block;
+      width: 32px;
+      height: 32px;
+    }
+    .brand .wordmark {
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300;
+      max-width: 18ch;
+      letter-spacing: -0.01em;
+    }
+
+    .hero .sub {
+      color: var(--muted);
+      max-width: 460px;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .hero .arrow {
+      position: absolute;
+      left: 50%;
+      bottom: 2.5rem;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 1.1rem;
+      user-select: none;
+    }
+
+    /* EXPERTISE */
+    .expertise {
+      padding: 7rem 0;
+    }
+
+    .expertise .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .expertise .col h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .expertise .col p {
+      color: var(--text);
+      max-width: 38ch;
+      margin: 0;
+    }
+
+    .expertise .note {
+      margin-top: 5rem;
+      text-align: center;
+      color: var(--muted);
+      font-style: italic;
+      max-width: 60ch;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    @media (min-width: 780px) {
+      .expertise .grid {
+        grid-template-columns: 1fr 1px 1fr;
+        gap: 4rem;
+      }
+      .expertise .divider {
+        background: var(--line);
+        width: 1px;
+        height: 100%;
+      }
+    }
+
+    /* PRODUITS */
+    .produits {
+      padding: 7rem 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .card {
+      background: var(--bg);
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-height: 220px;
+    }
+
+    .card .tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .card .name {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .card .desc {
+      color: var(--text);
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .pill {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+    }
+
+    .pill.active { color: var(--accent); }
+    .pill.pending { color: var(--muted); }
+
+    @media (min-width: 780px) {
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* PARTENAIRES */
+    .partners {
+      padding: 7rem 0;
+      text-align: center;
+    }
+
+    .partners .section-label {
+      text-align: center;
+    }
+
+    .partners p {
+      max-width: 560px;
+      margin: 0 auto;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* CONTACT */
+    .contact {
+      padding: 7rem 0;
+    }
+
+    .contact p {
+      margin: 0;
+    }
+
+    .contact .lead {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .contact a.email {
+      color: var(--text);
+      position: relative;
+      font-size: 1.1rem;
+    }
+
+    .contact a.email:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 4px;
+    }
+
+    .contact .addr {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 520px) {
+      footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BRAND -->
+  <a class="brand" href="#" aria-label="Roadbridge">
+    <img src="logo.svg" alt="" width="32" height="32" />
+    <span class="wordmark">Roadbridge</span>
+  </a>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="reveal">Nous construisons des produits IA sur des problèmes que nous comprenons de l'intérieur.</h1>
+      <p class="sub reveal">Expertise métier et expertise technique — combinées pour aller du problème réel au produit qui fonctionne.</p>
+    </div>
+    <div class="arrow" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="expertise">
+    <div class="container">
+      <p class="section-label reveal">Ce que nous apportons</p>
+      <div class="grid reveal">
+        <div class="col">
+          <h3>Métier</h3>
+          <p>Logistique, transport, événementiel. Nous connaissons les flux, les contraintes opérationnelles et les irritants réels des acteurs du secteur.</p>
+        </div>
+        <div class="divider" aria-hidden="true"></div>
+        <div class="col">
+          <h3>Technique</h3>
+          <p>Agents IA, structuration de données, automatisation de processus. Nous concevons et développons bout en bout.</p>
+        </div>
+      </div>
+      <p class="note reveal">Nous appliquons cette combinaison à nos propres produits — et à ceux de partenaires qui partagent la même exigence.</p>
+    </div>
+  </section>
+
+  <!-- PRODUITS -->
+  <section class="produits">
+    <div class="container">
+      <p class="section-label reveal">Nos produits</p>
+      <div class="cards reveal">
+        <article class="card">
+          <span class="tag">Transport</span>
+          <h3 class="name">CarrierBridge</h3>
+          <p class="desc">Aide les acheteurs transport à sourcer et qualifier leurs prestataires.</p>
+          <span class="pill active">Actif</span>
+        </article>
+        <article class="card">
+          <span class="tag">Logistique</span>
+          <h3 class="name">RoutingBridge</h3>
+          <p class="desc">Optimisation intelligente des flux et tournées de transport.</p>
+          <span class="pill active">Actif</span>
+        </article>
+        <article class="card">
+          <span class="tag">Logistique</span>
+          <h3 class="name">BookingBridge</h3>
+          <p class="desc">Automatisation du booking et de la réservation transport.</p>
+          <span class="pill active">Actif</span>
+        </article>
+        <article class="card">
+          <span class="tag">Événementiel</span>
+          <h3 class="name">EventBridge</h3>
+          <p class="desc">Structuration et mise à disposition des données culturelles et événementielles pour les IA.</p>
+          <span class="pill pending">En cours</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTENAIRES -->
+  <section class="partners">
+    <div class="container">
+      <p class="section-label reveal">Travailler ensemble</p>
+      <p class="reveal">Nous collaborons avec des partenaires qui ont un problème précis, une vraie connaissance de leur terrain, et l'exigence d'un résultat opérationnel. Pas de projet exploratoire, pas de POC sans suite. Nous nous impliquons là où ça compte.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <div class="container">
+      <p class="section-label reveal">Contact</p>
+      <div class="reveal">
+        <p class="lead">Pour toute demande sérieuse :</p>
+        <p><a class="email" href="mailto:info@roadbridge.co">info@roadbridge.co</a></p>
+        <p class="addr">6 Rue des Bateliers — 92110 Clichy, France</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+      <span>© 2025 Roadbridge</span>
+      <a href="#">Mentions légales</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const items = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      items.forEach(el => io.observe(el));
+    })();
+  </script>
+</body>
+</html>
