@@ -714,7 +714,6 @@
       <p class="section-label reveal">Contact</p>
       <div class="reveal">
         <p class="lead">Pour toute discussion de collaboration ou demande commerciale.</p>
-        <p><a class="email" href="mailto:info@roadbridge.co">info@roadbridge.co</a></p>
         <p class="addr">6 Rue des Bateliers — 92110 Clichy, France</p>
       </div>
 
@@ -815,7 +814,7 @@
           btnText.textContent = 'Envoyé';
         } catch (err) {
           status.className = 'form-status error';
-          status.textContent = (err && err.message) || 'Une erreur est survenue. Réessayez ou écrivez à info@roadbridge.co.';
+          status.textContent = (err && err.message) || 'Une erreur est survenue. Merci de réessayer plus tard.';
           btnText.textContent = originalBtnText;
           btn.disabled = false;
         }
