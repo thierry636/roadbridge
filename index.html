@@ -443,6 +443,125 @@
       margin-top: 0.5rem;
     }
 
+    /* CONTACT FORM */
+    .contact-form {
+      margin-top: 3.5rem;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .contact-form .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .contact-form label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-form label .optional {
+      letter-spacing: 0.02em;
+      text-transform: none;
+      font-weight: 300;
+      margin-left: 0.4rem;
+      color: var(--muted);
+      opacity: 0.8;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 300;
+      padding: 0.5rem 0;
+      width: 100%;
+      outline: none;
+      border-radius: 0;
+      transition: border-color 300ms ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-bottom-color: var(--accent);
+    }
+
+    .contact-form textarea {
+      min-height: 140px;
+      line-height: 1.6;
+      resize: vertical;
+    }
+
+    .contact-form .hp {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .contact-form .submit {
+      align-self: flex-start;
+      margin-top: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1.6rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: border-color 300ms ease, color 300ms ease;
+    }
+
+    .contact-form .submit:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .contact-form .submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .contact-form .submit-arrow {
+      display: inline-block;
+      transition: transform 300ms ease;
+    }
+
+    .contact-form .submit:hover:not(:disabled) .submit-arrow {
+      transform: translate(3px, -3px);
+    }
+
+    .contact-form .form-status {
+      font-size: 0.85rem;
+      color: var(--muted);
+      min-height: 1.4em;
+      margin: 0;
+    }
+
+    .contact-form .form-status.success {
+      color: var(--accent);
+    }
+
+    .contact-form .form-status.error {
+      color: #E08A8A;
+    }
+
     /* FOOTER */
     footer {
       border-top: 1px solid var(--line);
@@ -598,6 +717,34 @@
         <p><a class="email" href="mailto:info@roadbridge.co">info@roadbridge.co</a></p>
         <p class="addr">6 Rue des Bateliers — 92110 Clichy, France</p>
       </div>
+
+      <form class="contact-form reveal" id="contact-form" novalidate>
+        <div class="field">
+          <label for="cf-name">Nom</label>
+          <input type="text" id="cf-name" name="name" required autocomplete="name" maxlength="200" />
+        </div>
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" required autocomplete="email" maxlength="200" />
+        </div>
+        <div class="field">
+          <label for="cf-company">Société <span class="optional">(optionnel)</span></label>
+          <input type="text" id="cf-company" name="company" autocomplete="organization" maxlength="200" />
+        </div>
+        <div class="field">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="5" required maxlength="5000"></textarea>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for="cf-website">Ne pas remplir</label>
+          <input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+        <button type="submit" class="submit">
+          <span class="submit-text">Envoyer</span>
+          <span class="submit-arrow" aria-hidden="true">↗</span>
+        </button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
@@ -625,6 +772,54 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
       items.forEach(el => io.observe(el));
+    })();
+
+    (function () {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+      const btn = form.querySelector('.submit');
+      const btnText = form.querySelector('.submit-text');
+      const status = form.querySelector('.form-status');
+      const originalBtnText = btnText.textContent;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+
+        if (data.website) return;
+
+        if (!data.name || !data.email || !data.message) {
+          status.className = 'form-status error';
+          status.textContent = 'Merci de remplir les champs obligatoires.';
+          return;
+        }
+
+        btn.disabled = true;
+        btnText.textContent = 'Envoi…';
+        status.className = 'form-status';
+        status.textContent = '';
+
+        try {
+          const res = await fetch('/.netlify/functions/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.error || 'Envoi impossible.');
+          }
+          form.reset();
+          status.className = 'form-status success';
+          status.textContent = 'Message envoyé. Nous revenons vers vous rapidement.';
+          btnText.textContent = 'Envoyé';
+        } catch (err) {
+          status.className = 'form-status error';
+          status.textContent = (err && err.message) || 'Une erreur est survenue. Réessayez ou écrivez à info@roadbridge.co.';
+          btnText.textContent = originalBtnText;
+          btn.disabled = false;
+        }
+      });
     })();
   </script>
 </body>
